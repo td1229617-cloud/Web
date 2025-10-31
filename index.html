@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pañiñi Producciones</title>
+<style>
+  #loader { position: fixed; top: 0; left: 0; width: 100%; height: 20px; background: #eee; }
+  #progress { width: 0%; height: 100%; background: #4caf50; transition: width 0.1s linear; }
+  #content { display: none; margin-top: 30px; text-align: center; font-family: sans-serif; }
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div id="progress"></div>
+</div>
+
+<div id="content">
+  <h1>¡Bienvenido a mi página!</h1>
+  <p>Tiempo dedicado a crear esta página: <span id="timeSpent"></span></p>
+</div>
+
+<script>
+  // Cambia este valor al tiempo real que tardaste (en segundos)
+  const totalTime = 30; // ejemplo: 30 segundos
+  let elapsed = 0;
+
+  const progress = document.getElementById('progress');
+  const content = document.getElementById('content');
+  const timeDisplay = document.getElementById('timeSpent');
+
+  const interval = setInterval(() => {
+    elapsed++;
+    let percent = (elapsed / totalTime) * 100;
+    if (percent > 100) percent = 100;
+    progress.style.width = percent + '%';
+
+    const minutes = Math.floor(elapsed / 60);
+    const seconds = elapsed % 60;
+    timeDisplay.textContent = `${minutes}m ${seconds}s`;
+
+    if (elapsed >= totalTime) {
+      clearInterval(interval);
+      document.getElementById('loader').style.display = 'none';
+      content.style.display = 'block';
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>
+
+
+
