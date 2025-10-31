@@ -1,55 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pañiñi Producciones</title>
-<style>
-  #loader { position: fixed; top: 0; left: 0; width: 100%; height: 20px; background: #eee; }
-  #progress { width: 0%; height: 100%; background: #4caf50; transition: width 0.1s linear; }
-  #content { display: none; margin-top: 30px; text-align: center; font-family: sans-serif; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pañiñi Producciones</title>
+  <!-- Conecta tu CSS -->
+  <link rel="stylesheet" href="estilos.css">
 </head>
-<body>
+<body class="fade-in">
 
-<div id="loader">
-  <div id="progress"></div>
-</div>
+  <!-- Barra de carga -->
+  <div class="progress-container">
+    <div class="progress-bar"></div>
+  </div>
 
-<div id="content">
-  <h1>¡Bienvenido a la pagina de Pañiñi Producciones! Una empresa donde incluso trabajn dinosaurios. Este lugar te promete una experiencia prometedora como Actor, Trabajador o camarografo. Si buscas un lugar, Pañiñi es ideal.</h1>
-  <p>Tiempo dedicado a crear esta página: <span id="timeSpent"></span></p>
-</div>
+  <!-- Tiempo de creación -->
+  <p id="tiempo">Cargando tiempo de creación...</p>
 
-<script>
-  // Cambia este valor al tiempo real que tardaste (en horas)
-  const totalTime = 5; // ejemplo: 5 horas
-  let elapsed = 0;
+  <!-- Foto centrada -->
+  <div class="contenedor-foto">
+    <img src="Sin título.png" alt="imagen centrada">
+  </div>
 
-  const progress = document.getElementById('progress');
-  const content = document.getElementById('content');
-  const timeDisplay = document.getElementById('timeSpent');
+  <!-- Botón modo oscuro -->
+  <button id="modoOscuroBtn">🌙 Modo Oscuro</button>
 
-  const interval = setInterval(() => {
-    elapsed++;
-    let percent = (elapsed / totalTime) * 100;
-    if (percent > 100) percent = 100;
-    progress.style.width = percent + '%';
-
-    const minutes = Math.floor(elapsed / 60);
-    const seconds = elapsed % 60;
-    timeDisplay.textContent = `${minutes}m ${seconds}s`;
-
-    if (elapsed >= totalTime) {
-      clearInterval(interval);
-      document.getElementById('loader').style.display = 'none';
-      content.style.display = 'block';
-    }
-  }, 1000);
-</script>
+  <!-- Conecta tu JS -->
+  <script src="script.js"></script>
 
 </body>
 </html>
-
-
-
